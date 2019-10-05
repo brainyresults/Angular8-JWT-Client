@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators } from "@angular/forms";
-
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-main',
@@ -15,24 +16,22 @@ export class MainComponent implements OnInit {
   public postForm = new FormGroup({
     title: new FormControl('',  Validators.required),
     content: new FormControl('',  Validators.required),
-   
   }); 
 
   createPost(formData: FormData){
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
-  
+
     let post = {
       title: formData["title"],
       content: formData["content"]
     }
 
     //send a post request to the 
-    this.httpClient.post("http://localhost:8000/post/createPost", JSON.stringify(post), {headers: headers}).subscribe(res => {
+    this.httpClient.post(`${environment.api_endpoint}/posts`, JSON.stringify(post), {headers: headers}).subscribe(res => {
         //set the token to localStorage
         //localStorage.setItem("access_token", res["token"]);
         console.log(res)
-      
     });
   }
 

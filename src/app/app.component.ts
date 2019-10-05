@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
-import { AuthService } from "./auth.service";
+import { AuthService } from "src/app/services/auth.service";
 
 
 @Component({

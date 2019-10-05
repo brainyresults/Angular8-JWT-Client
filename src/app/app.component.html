@@ -6,6 +6,9 @@
     <ul>
       <li *ngIf="!userStatus"><a routerLink="/signup">SignUp</a></li>
       <li *ngIf="!userStatus"><a routerLink="/login">Login</a></li>
+
+      <li *ngIf="userStatus"><button [routerLink]="['/home']">Home</button></li>      
+      <li *ngIf="userStatus"><button [routerLink]="['/main']">Main</button></li>      
       <li *ngIf="userStatus"><button (click)="logout()">Logout</button></li>
     </ul>
   </nav>
